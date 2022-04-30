@@ -1,0 +1,18 @@
+You have been imprisoned for a crime you didn't commit!
+You have but one chance at freedom and a new life.
+You can choose to play a game with the executioner.
+They say:
+"Guess my secret word and you will be set free"
+"I will even give you some gold if that will help thee"
+"Select a list of words and difficulty to play"
+"Choose too hard and you'll be left hanging this day"
+"The harder you make it, the more gold you could earn"
+"Immortalised in history, your name we will burn"
+"The rules are simple, just guess a single letter"
+"If it's part of the word it will appear for the better"
+"Choose poorly though and your one step closer to death"
+"Too many wrong, and you'll have taken your last breath"
+"Win or lose, you're the master of your own fate"
+"Win it quickly and the reward will be great."
+
+(For detailed instructions, refer to the user manual)

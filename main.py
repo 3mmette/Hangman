@@ -8,15 +8,15 @@
 #  Copyright:  © Copyright 2022, Emmette Taylor
 #
 #########################################################################
-#
+
 # importing modules
 # import only system from os
 from os import system, name
 # import sleep to show output for some time period
 import time
+from welcome_screens import welcome
+from utility_functions import *
 
-#
-#
 #########################################################################
 # CONSTANTS
 ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -24,6 +24,8 @@ ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 
 MAX_LIVES = 10
 SCORE_AMOUNT = 10
+HEIGHT = 29
+WIDTH = 61
 
 
 ##########################################################################
@@ -44,37 +46,13 @@ def askUserForSingleCharacter(options=[], prompt="Enter a character"):
     return choice
 
 
-##########################################################################
-# UTILITY FUNCTIONS
-#
-# define the clear screen function
-def clearScreen():
-    # for Windows
-    if name == 'nt':
-        _ = system('cls')
-    # for mac and linux (here os.name is 'posix')
-    else:
-        _ = system('clear')
-
-
-#
-# Display a line of characters with end characters different if required
-def displayLine(char="=", lineLength=10, endChar="*"):
-    print(endChar + char * (lineLength - len(endChar) * 2) + endChar)
-
-
-#
-#
 #########################################################################
 # THE MAIN PROGRAM
 #########################################################################
-clearScreen()
-displayLine("-", 80, "-")
-
 # Welcome the user
-playerName = input("What is your name? ")
+user_name = welcome(HEIGHT, WIDTH)
 
-print("\nHello, " + playerName, "\nTime to play Hangman!")
+print("\nHello, " + user_name, "\nTime to play Hangman!")
 print()
 
 # wait for 1 second
@@ -82,7 +60,7 @@ time.sleep(1)
 
 print("Start guessing...")
 time.sleep(0.5)
-displayLine("=", 80, "=")
+solid_line(WIDTH)
 
 # here we set the secret word - in the project you need to amend this to
 # open the default file and extract a list of words, and randomly select
@@ -154,4 +132,4 @@ while lives > 0:
         print("You Lose")
 
 # Press enter to quit
-finish = input("Press enter to finish. Goodbye " + playerName)
+finish = input("Press enter to finish. Goodbye " + user_name)
