@@ -14,6 +14,7 @@ from welcome_screens import welcome
 from word_selection import word_selection
 from difficulty_selection import difficulty_selection
 from gameplay import gameplay
+from game_over import game_over
 
 #########################################################################
 
@@ -38,5 +39,9 @@ if __name__ == "__main__":
     # The game itself. Returns the result and time taken to complete the game.
     gameplay_information = gameplay(HEIGHT, WIDTH, user_name, word_selection_information[0],
                                     difficulty_selection_information[1], difficulty_selection_information[0])
+
+    # Concluded the game, differing information depending on the result.
+    game_over(HEIGHT, WIDTH, user_name, word_selection_information[0], difficulty_selection_information[1],
+              gameplay_information[0])
 
     finish = input("Press enter to finish. Goodbye " + user_name)
