@@ -15,6 +15,7 @@ from word_selection import word_selection
 from difficulty_selection import difficulty_selection
 from gameplay import gameplay
 from game_over import game_over
+from scoring import scoring
 
 #########################################################################
 
@@ -27,21 +28,34 @@ WIDTH = 61
 #########################################################################
 
 if __name__ == "__main__":
-    # Welcome screens and input the name of the user.
-    user_name = welcome(HEIGHT, WIDTH)
+    # Loop gameplay
+    while True:
 
-    # Selects a random secret word. Returns the word and the list it came from.
-    word_selection_information = word_selection(HEIGHT, WIDTH, user_name)
+        # Welcome screens and input the name of the user.
+        user_name = welcome(HEIGHT, WIDTH)
 
-    # Select a difficulty. Returns the number of lives and difficulty.
-    difficulty_selection_information = difficulty_selection(HEIGHT, WIDTH, user_name)
+        # Selects a random secret word. Returns the word and the list it came from.
+        word_selection_information = word_selection(HEIGHT, WIDTH, user_name)
 
-    # The game itself. Returns the result and time taken to complete the game.
-    gameplay_information = gameplay(HEIGHT, WIDTH, user_name, word_selection_information[0],
-                                    difficulty_selection_information[1], difficulty_selection_information[0])
+        # Select a difficulty. Returns the number of lives and difficulty.
+        difficulty_selection_information = difficulty_selection(HEIGHT, WIDTH, user_name)
 
-    # Concluded the game, differing information depending on the result.
-    game_over(HEIGHT, WIDTH, user_name, word_selection_information[0], difficulty_selection_information[1],
-              gameplay_information[0])
+        # The game itself. Returns the result and time taken to complete the game.
+        gameplay_information = gameplay(HEIGHT, WIDTH, user_name, word_selection_information[0],
+                                        difficulty_selection_information[1], difficulty_selection_information[0])
 
-    finish = input("Press enter to finish. Goodbye " + user_name)
+        # Concluded the game, differing information depending on the result.
+        game_over(HEIGHT, WIDTH, user_name, word_selection_information[0], difficulty_selection_information[1],
+                  gameplay_information[0])
+
+        scoring(HEIGHT, WIDTH, user_name, word_selection_information[0], word_selection_information[1],
+                difficulty_selection_information[1], gameplay_information[0], gameplay_information[1])
+
+        # Play again or exit.
+        replay = input("[ENTER] or 0: ")
+        if replay == "0":
+            break
+
+    # If player exits
+    print("Goodbye " + user_name)
+

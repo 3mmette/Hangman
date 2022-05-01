@@ -60,7 +60,7 @@ def game_over(height, width, user_name, word, difficulty, result):
     :param user_name: name of the user
     :param word: the target word
     :param difficulty: the selected difficulty of the game, for picture selection
-    :param result: True, False or None for how the gaem went.
+    :param result: True, False or None for how the game went
     """
     # Uses the difficulty setting to select the respective text art list.
     picture = None
