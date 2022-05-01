@@ -9,13 +9,10 @@
 #
 #########################################################################
 
-# importing modules
-# import only system from os
-from os import system, name
-# import sleep to show output for some time period
 import time
-from welcome_screens import welcome
 from utility_functions import *
+from welcome_screens import welcome
+from word_selection import word_selection
 
 #########################################################################
 # CONSTANTS
@@ -49,23 +46,22 @@ def askUserForSingleCharacter(options=[], prompt="Enter a character"):
 #########################################################################
 # THE MAIN PROGRAM
 #########################################################################
-# Welcome the user
+# Welcome screens and get the name of the user.
 user_name = welcome(HEIGHT, WIDTH)
 
+# Welcome the user
 print("\nHello, " + user_name, "\nTime to play Hangman!")
 print()
 
 # wait for 1 second
 time.sleep(1)
 
+# Selects a random secret word.
+word = word_selection(HEIGHT, WIDTH, user_name)[0].lower()
+
 print("Start guessing...")
 time.sleep(0.5)
 solid_line(WIDTH)
-
-# here we set the secret word - in the project you need to amend this to
-# open the default file and extract a list of words, and randomly select
-# from that list.
-word = "programming"
 
 # create a guesses variable with an empty value
 guesses = ''

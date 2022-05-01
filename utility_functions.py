@@ -26,7 +26,7 @@ def solid_line(width, char="-", end_character="+"):
     return 1
 
 
-def header(inner_width, game_name, company="SIMPLE GAME COLLECTIVE", version=1.1):
+def header(inner_width, game_name, company="SIMPLE GAME COLLECTIVE", version=1.2):
     """
     Prints header banner with large scale text art. Also shows company and current version within box borders
     :param inner_width: width of the box minus outer edge
@@ -115,3 +115,37 @@ def scoreboard(inner_width):
     line_count += text_line(inner_width, custom_scores)
 
     return line_count
+
+
+def menu(inner_width, options, start_number=1, lines_per_option=1):
+    """
+    Prints out a numbered menu from a list of options
+    :param inner_width: width of the box minus outer edge
+    :param options: menu selection options
+    :param start_number: what number the menu numbers will iterate from, default being 1
+    :param lines_per_option: if multiple lines are needed for each option
+    :return line_count: for interface box sizing
+    """
+    line_count = 0
+    for line in options:
+        if line_count % lines_per_option == 0:
+            print(f"| {start_number}) {line:{inner_width - 3}} |")
+            start_number += 1
+        else:
+            print(f"| {line:<{inner_width}} |")
+        line_count += 1
+    return line_count
+
+
+def try_integer(question):
+    """
+    Ask the user a question which you want an integer response for. Will attempt to change it to an integer
+    :param question: The question you want an integer response for
+    :return user_input: The input as an integer if possible, or the input
+    """
+    user_input = input(question)
+    try:
+        user_input = int(user_input)
+        return user_input
+    except ValueError:
+        return user_input

@@ -76,7 +76,7 @@ def welcome_rules_box(user_name, height, width):
 
 def welcome(height, width):
     """
-    A combination of all the required functions to complete the version 1.1 enhancement
+    A combination of all the required functions to complete the version 1.1 upgrade
     :param height: height of the box
     :param width: width of the box
     :return user_name: the name the user inputted
