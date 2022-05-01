@@ -13,6 +13,7 @@ import time
 from utility_functions import *
 from welcome_screens import welcome
 from word_selection import word_selection
+from difficulty_selection import difficulty_selection
 
 #########################################################################
 # CONSTANTS
@@ -46,86 +47,86 @@ def askUserForSingleCharacter(options=[], prompt="Enter a character"):
 #########################################################################
 # THE MAIN PROGRAM
 #########################################################################
-# Welcome screens and get the name of the user.
-user_name = welcome(HEIGHT, WIDTH)
+if __name__ == "__main__":
+    # Welcome screens and get the name of the user.
+    user_name = welcome(HEIGHT, WIDTH)
 
-# Welcome the user
-print("\nHello, " + user_name, "\nTime to play Hangman!")
-print()
+    # Selects a random secret word.
+    word_selection_information = word_selection(HEIGHT, WIDTH, user_name)
 
-# wait for 1 second
-time.sleep(1)
+    # Select a difficulty
+    difficulty_selection_information = difficulty_selection(HEIGHT, WIDTH, user_name)
 
-# Selects a random secret word.
-word = word_selection(HEIGHT, WIDTH, user_name)[0].lower()
 
-print("Start guessing...")
-time.sleep(0.5)
-solid_line(WIDTH)
+    print("Start guessing...")
+    time.sleep(0.5)
+    solid_line(WIDTH)
 
-# create a guesses variable with an empty value
-guesses = ''
+    word = word_selection_information[0]
 
-# create a variable for the score
-score = 0
+    # create a guesses variable with an empty value
+    guesses = ''
 
-# determine the number of lives
-lives = MAX_LIVES
+    # create a variable for the score
+    score = 0
 
-# list of letters not used
-letters = ALPHABET
+    # determine the number of lives
+    lives = MAX_LIVES
 
-# Create a while loop
-# check if the lives are more than zero
-while lives > 0:
-    # make a counter that starts with zero
-    failed = 0
+    # list of letters not used
+    letters = ALPHABET
 
-    print("\nGuess the word: ", end="")
-    # for every character in the secret word
-    for char in word:
-        # see if the character is in the players guesses
-        if char in guesses:
-            # print then out the character
-            print(char, end="")
+    # Create a while loop
+    # check if the lives are more than zero
+    while lives > 0:
+        # make a counter that starts with zero
+        failed = 0
+
+        print("\nGuess the word: ", end="")
+        # for every character in the secret word
+        for char in word:
+            # see if the character is in the players guesses
+            if char in guesses:
+                # print then out the character
+                print(char, end="")
+            else:
+                # if not found, print a dash
+                print("-", end="")
+                # and increase the failed counter by one
+                failed += 1
+        # if failed is equal to zero
+        # print You Won
+        if failed == 0:
+            print("\nYou won")
+            # exit the script
+            break
+
+        print("\n\n")
+        # ask the user to guess a character
+        guess = askUserForSingleCharacter(letters, "Enter a character")
+        # add the guess to the list of characters used so far...
+        guesses += guess
+
+        # remove the guess from the list of available letters
+        letters.remove(guess)
+
+        # if the guess is not found in the secret word
+        if guess not in word:
+            # lives counter decreases by 1
+            lives -= 1
+            # print wrong
+            print("Guessed Wrong!\n")
         else:
-            # if not found, print a dash
-            print("-", end="")
-            # and increase the failed counter by one
-            failed += 1
-    # if failed is equal to zero
-    # print You Won
-    if failed == 0:
-        print("\nYou won")
-        # exit the script
-        break
+            # increase the player score
+            score = score + SCORE_AMOUNT
 
-    print("\n\n")
-    # ask the user to guess a character
-    guess = askUserForSingleCharacter(letters, "Enter a character")
-    # add the guess to the list of characters used so far...
-    guesses += guess
+        # how many lives are left
+        print("You have", + lives, 'more guesses\n')
 
-    # remove the guess from the list of available letters
-    letters.remove(guess)
+        # if the lives are equal to zero
+        if lives == 0:
+            # print "You Lose"
+            print("You Lose")
 
-    # if the guess is not found in the secret word
-    if guess not in word:
-        # lives counter decreases by 1
-        lives -= 1
-        # print wrong
-        print("Guessed Wrong!\n")
-    else:
-        # increase the player score
-        score = score + SCORE_AMOUNT
-
-    # how many lives are left
-    print("You have", + lives, 'more guesses\n')
-
-    # if the lives are equal to zero
-    if lives == 0:
-        # print "You Lose"
-        print("You Lose")
-
-# Press enter to quit
-finish = input("Press enter to finish. Goodbye " + user_name)
+    # Press enter to quit
+    finish = input("Press enter to finish. Goodbye " + user_name)
