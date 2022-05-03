@@ -1,4 +1,4 @@
 Beginner, 1st XXXXXXX 00.0, 2nd XXXXXXX 00.0, 3rd XXXXXXX 00.0,
 Intermediate, 1st XXXXXXX 00.0, 2nd XXXXXXX 00.0, 3rd XXXXXXX 00.0,
 Expert, 1st XXXXXXX 00.0, 2nd XXXXXXX 00.0, 3rd XXXXXXX 00.0,
-Custom Made Word Lists, 1st XXXXXXX 00.0 using the list of words Unknown, 2nd XXXXXXX 00.0 using the list of words Unknown, 3rd XXXXXXX 00.0 using the list of words Unknown,
+Custom Made Word Lists, 1st XXXXXXX 00.0 using the list of words Animals, 2nd XXXXXXX 00.0 using the list of words Custom, 3rd XXXXXXX 00.0 using the list of words Unknown,

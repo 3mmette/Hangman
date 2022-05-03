@@ -20,7 +20,7 @@ from scoring import scoring
 #########################################################################
 
 # CONSTANTS
-HEIGHT = 29
+HEIGHT = 30
 WIDTH = 61
 
 #########################################################################
@@ -48,6 +48,7 @@ if __name__ == "__main__":
         game_over(HEIGHT, WIDTH, user_name, word_selection_information[0], difficulty_selection_information[1],
                   gameplay_information[0])
 
+        # Calculate the users score and update the leaderboard if applicable.
         scoring(HEIGHT, WIDTH, user_name, word_selection_information[0], word_selection_information[1],
                 difficulty_selection_information[1], gameplay_information[0], gameplay_information[1])
 

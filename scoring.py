@@ -102,7 +102,7 @@ def calculate_score(word, from_file, difficulty, time_taken):
     return word_score, list_score, difficulty_score, round(time_score, 2), round(score, 2)
 
 
-def write_scoreboard(user_name, from_file, score):
+def write_high_score(user_name, from_file, score):
     """
     Opens the high_scores.txt file and checks if it should replace any of the high scores with the new score
     :param user_name: name of the user
@@ -230,7 +230,7 @@ def scoring(height, width, user_name, word, from_file, difficulty, result, time_
 
     # If the game was won.
     if result is True:
-        place = write_scoreboard(user_name, from_file, calculations[4])
+        place = write_high_score(user_name, from_file, calculations[4])
         if place == "First":
             placing = f"Congratulations {user_name}, you took first place!"
         elif place == "Second":
@@ -248,6 +248,3 @@ def scoring(height, width, user_name, word, from_file, difficulty, result, time_
         placing = f"That could have been your score {user_name}... Such a pity!"
         final_scoreboard_box(height, width, word, from_file, difficulty, time_taken, placing,
                              calculations[0], calculations[1], calculations[2], calculations[3], calculations[4])
-
-
-

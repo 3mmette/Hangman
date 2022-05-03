@@ -26,7 +26,7 @@ def solid_line(width, char="-", end_character="+"):
     return 1
 
 
-def header(inner_width, game_name, company="SIMPLE GAME COLLECTIVE", version=1.2):
+def header(inner_width, game_name, company="SIMPLE GAME COLLECTIVE", version=2.0):
     """
     Prints header banner with large scale text art. Also shows company and current version within box borders
     :param inner_width: width of the box minus outer edge
@@ -37,7 +37,7 @@ def header(inner_width, game_name, company="SIMPLE GAME COLLECTIVE", version=1.2
     """
     line_count = 1
     line_count += text_line(inner_width, game_name, "^")
-    print(f"| BY {company:{inner_width - 8}} V{version} |")
+    print(f"| BY {company:{inner_width - 9}} V {version} |")
     return line_count
 
 
