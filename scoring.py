@@ -74,11 +74,11 @@ def calculate_score(word, from_file, difficulty, time_taken):
         word_score += word_letters[key] * letter_score[key]
 
     # Get score multiplier for the list selected.
-    if from_file == "Beginner":
+    if from_file == "beginner":
         list_score = 0.75
-    elif from_file == "Intermediate":
+    elif from_file == "intermediate":
         list_score = 1
-    elif from_file == "Expert":
+    elif from_file == "expert":
         list_score = 1.25
     else:
         list_score = 1

@@ -129,15 +129,15 @@ def word_selection(height, width, user_name):
         # Selects a random word for the above choice.
         if selection == 1:
             word = random_word("game_files/beginner.txt")
-            from_file = "Beginner"
+            from_file = "beginner"
             break
         if selection == 2:
             word = random_word("game_files/intermediate.txt")
-            from_file = "Intermediate"
+            from_file = "intermediate"
             break
         if selection == 3:
             word = random_word("game_files/expert.txt")
-            from_file = "Expert"
+            from_file = "expert"
             break
 
         # If the user wants to select from a custom uploaded file in the word_lists folder.
