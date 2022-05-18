@@ -8,19 +8,19 @@ from text_art import *
 word_list_options = [
     "Beginner",
     "   A collection of the most common words.",
-    "   Score multiplied x 0.75",
+    "   Score multiplied x 0.75!",
     "",
     "Intermediate",
     "   A collection of words you should know.",
-    "   Score multiplied x 1.00",
+    "   Score multiplied x 1.00!",
     "",
     "Expert",
     "   A collection of all English words.",
-    "   Score multiplied x 1.25",
+    "   Score multiplied x 1.25!",
     "",
     "Custom",
     "   Select from user uploaded lists.",
-    "   Score multiplied x 1.00"
+    "   Score multiplied x 1.00!"
     ]
 
 
@@ -42,7 +42,7 @@ def word_file_selection_box(height, width, user_name):
     line_count += solid_line(width)
     line_count += menu(inner_width, word_list_options, 1, 4)
     for extra in range((height - line_count)):
-        print(f"| {' ':{inner_width}} |")
+        empty_line(inner_width)
     line_count += solid_line(width)
 
 
@@ -69,7 +69,7 @@ def custom_file_selection_box(height, width, user_name):
         custom_list_dir_names.append(i.removesuffix(".txt"))
     line_count += menu(inner_width, custom_list_dir_names, 1, 1)
     for extra in range((height - line_count)):
-        print(f"| {' ':{inner_width}} |")
+        empty_line(inner_width)
     text_line(line_count, f"0) {'To return to list selection':{inner_width - 3}}")
     solid_line(width)
     return custom_list_dir
@@ -82,11 +82,10 @@ def random_word(file):
     :return word.upper(): uppercase random word from the selected file
     """
     words = list()
-    file = open(f"{file}", "r")
-    for word in file:
-        if len(word.strip()) >= 4:
-            words.append(word.strip())
-    file.close()
+    with open(f"{file}", "r") as text:
+        for word in text:
+            if len(word.strip()) >= 4:
+                words.append(word.strip())
     if len(words) > 0:
         word = random.choice(words)
         return word.upper()
@@ -128,16 +127,16 @@ def word_selection(height, width, user_name):
 
         # Selects a random word for the above choice.
         if selection == 1:
-            word = random_word("game_files/beginner.txt")
-            from_file = "beginner"
+            word = random_word("game_files/Beginner.txt")
+            from_file = "Beginner"
             break
         if selection == 2:
-            word = random_word("game_files/intermediate.txt")
-            from_file = "intermediate"
+            word = random_word("game_files/Intermediate.txt")
+            from_file = "Intermediate"
             break
         if selection == 3:
-            word = random_word("game_files/expert.txt")
-            from_file = "expert"
+            word = random_word("game_files/Expert.txt")
+            from_file = "Expert"
             break
 
         # If the user wants to select from a custom uploaded file in the word_lists folder.

@@ -74,11 +74,11 @@ def calculate_score(word, from_file, difficulty, time_taken):
         word_score += word_letters[key] * letter_score[key]
 
     # Get score multiplier for the list selected.
-    if from_file == "beginner":
+    if from_file == "Beginner":
         list_score = 0.75
-    elif from_file == "intermediate":
+    elif from_file == "Intermediate":
         list_score = 1
-    elif from_file == "expert":
+    elif from_file == "Expert":
         list_score = 1.25
     else:
         list_score = 1
@@ -114,26 +114,65 @@ def write_high_score(user_name, from_file, score):
     place = None
     custom = True
     count = 0
-    file = open("game_files/high_scores.txt", "r")
+    with open("game_files/high_scores.txt", "r") as score_file:
 
-    # If the user was using one of the three pre-made word collections.
-    while count <= 2:
-        for line in file.readlines(3):
-            count += 1
+        # If the user was using one of the three pre-made word collections.
+        while count <= 2:
+            for line in score_file.readlines(3):
+                count += 1
 
-            # Matches the word collection selected with the corresponding line in the high scores file.
-            if line.startswith(from_file):
+                # Matches the word collection selected with the corresponding line in the high scores file.
+                if line.startswith(from_file):
 
-                # Therefor it was not a custom list.
-                custom = False
+                    # Therefor it was not a custom list.
+                    custom = False
 
+                    new_line = ""
+                    parts = line.strip().split(",")
+                    new_line += parts[0] + ","
+
+                    # If the user beat the first score.
+                    if score > float(parts[1].split()[2]):
+                        new_line += " 1st" + " " + user_name + " " + str(score) + ","
+                        new_line += parts[1].replace("1st", "2nd") + ","
+                        new_line += parts[2].replace("2nd", "3rd") + ","
+                        place = "First"
+
+                    # If the user the second score.
+                    elif score > float(parts[2].split()[2]):
+                        new_line += parts[1] + ","
+                        new_line += " 2nd" + " " + user_name + " " + str(score) + ","
+                        new_line += parts[2].replace("2nd", "3rd") + ","
+                        place = "Second"
+
+                    # If the user beat the third score.
+                    elif score > float(parts[3].split()[2]):
+                        new_line += parts[1] + ","
+                        new_line += parts[2] + ","
+                        new_line += " 3rd" + " " + user_name + " " + str(score) + ","
+                        place = "Third"
+
+                    # If the user didn't beat any of the top three scores.
+                    else:
+                        new_line += parts[1] + ","
+                        new_line += parts[2] + ","
+                        new_line += parts[3] + ","
+                    lines.append(new_line)
+
+                # If the line did not match the word collection selected.
+                else:
+                    lines.append(line.strip())
+
+        for line in score_file.readlines(1):
+            # If a custom file was selected.
+            if custom is True:
                 new_line = ""
                 parts = line.strip().split(",")
                 new_line += parts[0] + ","
 
                 # If the user beat the first score.
                 if score > float(parts[1].split()[2]):
-                    new_line += " 1st" + " " + user_name + " " + str(score) + ","
+                    new_line += " 1st" + " " + user_name + " " + str(score) + " using the list of words " + from_file + ","
                     new_line += parts[1].replace("1st", "2nd") + ","
                     new_line += parts[2].replace("2nd", "3rd") + ","
                     place = "First"
@@ -141,7 +180,7 @@ def write_high_score(user_name, from_file, score):
                 # If the user the second score.
                 elif score > float(parts[2].split()[2]):
                     new_line += parts[1] + ","
-                    new_line += " 2nd" + " " + user_name + " " + str(score) + ","
+                    new_line += " 2nd" + " " + user_name + " " + str(score) + " using the list of words " + from_file + ","
                     new_line += parts[2].replace("2nd", "3rd") + ","
                     place = "Second"
 
@@ -149,7 +188,7 @@ def write_high_score(user_name, from_file, score):
                 elif score > float(parts[3].split()[2]):
                     new_line += parts[1] + ","
                     new_line += parts[2] + ","
-                    new_line += " 3rd" + " " + user_name + " " + str(score) + ","
+                    new_line += " 3rd" + " " + user_name + " " + str(score) + " using the list of words " + from_file + ","
                     place = "Third"
 
                 # If the user didn't beat any of the top three scores.
@@ -159,56 +198,15 @@ def write_high_score(user_name, from_file, score):
                     new_line += parts[3] + ","
                 lines.append(new_line)
 
-            # If the line did not match the word collection selected.
+            # If a custom file was not selected.
             else:
                 lines.append(line.strip())
 
-    for line in file.readlines(1):
-        # If a custom file was selected.
-        if custom is True:
-            new_line = ""
-            parts = line.strip().split(",")
-            new_line += parts[0] + ","
-
-            # If the user beat the first score.
-            if score > float(parts[1].split()[2]):
-                new_line += " 1st" + " " + user_name + " " + str(score) + " using the list of words " + from_file + ","
-                new_line += parts[1].replace("1st", "2nd") + ","
-                new_line += parts[2].replace("2nd", "3rd") + ","
-                place = "First"
-
-            # If the user the second score.
-            elif score > float(parts[2].split()[2]):
-                new_line += parts[1] + ","
-                new_line += " 2nd" + " " + user_name + " " + str(score) + " using the list of words " + from_file + ","
-                new_line += parts[2].replace("2nd", "3rd") + ","
-                place = "Second"
-
-            # If the user beat the third score.
-            elif score > float(parts[3].split()[2]):
-                new_line += parts[1] + ","
-                new_line += parts[2] + ","
-                new_line += " 3rd" + " " + user_name + " " + str(score) + " using the list of words " + from_file + ","
-                place = "Third"
-
-            # If the user didn't beat any of the top three scores.
-            else:
-                new_line += parts[1] + ","
-                new_line += parts[2] + ","
-                new_line += parts[3] + ","
-            lines.append(new_line)
-
-        # If a custom file was not selected.
-        else:
-            lines.append(line.strip())
-    file.close()
-
     # Write the updated scores to file if a new score added.
     if place is not None:
-        file = open("game_files/high_scores.txt", "w")
-        for line in lines:
-            file.write(line + "\n")
-        file.close()
+        with open("game_files/high_scores.txt", "w") as score_file:
+            for line in lines:
+                score_file.write(line + "\n")
 
     return place
 

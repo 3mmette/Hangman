@@ -13,7 +13,7 @@ difficulty_options = [
     "   You have 6 lives. Score multiplied x 1!",
     "",
     "HARD",
-    "   Been doing it hard there chief, even lost a leg?",
+    "   Been doing it hard there sticky??? Even lost a leg?",
     "   You have 5 lives. Score multiplied x 1.25!"
     ]
 

@@ -84,27 +84,24 @@ def scoreboard(inner_width):
     custom_scores = list()
 
     # Opens the high score file.
-    file = open("game_files/high_scores.txt", "r")
+    with open("game_files/high_scores.txt", "r") as score_file:
 
-    # Create lines to print from the file.
-    lines = 0
-    for line in file:
-        if lines < 3:
-            parts = line.split(",")
-            headings += f"{parts[0].strip():<19}"
-            first += f"{parts[1].strip():<19}"
-            second += f"{parts[2].strip():<19}"
-            third += f"{parts[3].strip():<19}"
-            lines += 1
-        else:
-            parts = line.split(",")
-            custom_scores.append(parts[0].strip())
-            custom_scores.append(parts[1].strip())
-            custom_scores.append(parts[2].strip())
-            custom_scores.append(parts[3].strip())
-
-    # Closes the high score file.
-    file.close()
+        # Create lines to print from the file.
+        lines = 0
+        for line in score_file:
+            if lines < 3:
+                parts = line.split(",")
+                headings += f"{parts[0].strip():<19}"
+                first += f"{parts[1].strip():<19}"
+                second += f"{parts[2].strip():<19}"
+                third += f"{parts[3].strip():<19}"
+                lines += 1
+            else:
+                parts = line.split(",")
+                custom_scores.append(parts[0].strip())
+                custom_scores.append(parts[1].strip())
+                custom_scores.append(parts[2].strip())
+                custom_scores.append(parts[3].strip())
 
     # Prints information.
     line_count += text_line(inner_width, headings)

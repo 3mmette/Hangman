@@ -5,7 +5,7 @@ winner = ["Congratulations on winning this game of Hangman.",
           "You played well, and are deserving of your freedom.",
           "Move on to see if your name will be immortalised.",
           "For now, enjoy the victory and your life.",
-          "Next time you might not be so lucky."]
+          "Next time you may not be so lucky."]
 
 loser = ["Here hangs the remains of the defeated.",
          "They flew too close to the sun and lost.",
@@ -14,7 +14,7 @@ loser = ["Here hangs the remains of the defeated.",
          "Oh wait, your dead."]
 
 quitter = ["Here hangs the remains of the quitter.",
-           "Quitting is worse than losing you know.",
+           "Because quitting is worse than losing.",
            "Move on to see the names of some sticks still living",
            "Maybe try an easier setting next time...",
            "Oh wait, your dead."]

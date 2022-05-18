@@ -28,11 +28,12 @@ WIDTH = 61
 #########################################################################
 
 if __name__ == "__main__":
+
+    # Welcome screens and input the name of the user.
+    user_name = welcome(HEIGHT, WIDTH)
+
     # Loop gameplay
     while True:
-
-        # Welcome screens and input the name of the user.
-        user_name = welcome(HEIGHT, WIDTH)
 
         # Selects a random secret word. Returns the word and the list it came from.
         word_selection_information = word_selection(HEIGHT, WIDTH, user_name)

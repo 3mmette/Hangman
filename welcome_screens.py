@@ -66,9 +66,9 @@ def welcome_rules_box(user_name, height, width):
     line_count += solid_line(width)
     line_count += text_line(inner_width, f"Read this carefully {user_name}, it may save your life.", "^")
     line_count += solid_line(width)
-    text = open("game_files/rules.txt", "r")
-    for line in text:
-        line_count += text_line(inner_width, line.strip())
+    with open("game_files/rules.txt", "r") as text:
+        for line in text:
+            line_count += text_line(inner_width, line.strip())
     for extra in range((height - line_count)):
         empty_line(inner_width)
     solid_line(width)

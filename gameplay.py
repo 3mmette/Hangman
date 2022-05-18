@@ -13,13 +13,16 @@ qwerty_keys = [
 
 correct_quotes = ["your one step closer to freedom!",
                   "was that luck or skill?",
-                  "great guess, another letter in!"
+                  "great guess, another letter in!",
+                  "interesting.... but it worked.",
+                  "amazing! Keep it up."
                   ]
 
 incorrect_quotes = ["your better then that!",
                     "do you want to die?",
                     "why would you guess that?",
-                    "that was stupid of you!"
+                    "that was stupid of you!",
+                    "keep that up and you'll be swinging soon"
                     ]
 
 
@@ -132,7 +135,7 @@ def gameplay(height, width, user_name, word, difficulty, lives):
     while result is None:
         failed = 0
         progress = ""
-        # **Modified Original Code** Creates a word with any characters not guessed replaced with an underscore.
+        # ***Modified Original Code*** Creates a word with any characters not guessed replaced with an underscore.
         for character in word:
             if character in guesses:
                 progress += " " + character + " "
