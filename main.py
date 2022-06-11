@@ -10,12 +10,12 @@
 #########################################################################
 
 # Import individual game sections into the main program
-from welcome_screens import welcome
-from word_selection import word_selection
-from difficulty_selection import difficulty_selection
-from gameplay import gameplay
-from game_over import game_over
-from scoring import scoring
+from game_files.welcome_screens import welcome
+from game_files.word_selection import word_selection
+from game_files.difficulty_selection import difficulty_selection
+from game_files.gameplay import gameplay
+from game_files.game_over import game_over
+from game_files.scoring import scoring
 
 #########################################################################
 

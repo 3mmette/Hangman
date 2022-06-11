@@ -1,7 +1,7 @@
 import os
 import random
-from utility_functions import *
-from text_art import *
+from game_files.utility_functions import *
+from game_files.text_art import *
 
 
 # Options for the three provided lists, and an option to choose from custom lists.
@@ -49,7 +49,7 @@ def word_file_selection_box(height, width, user_name):
 def custom_file_selection_box(height, width, user_name):
     """
     Prints a box with a header, text and each individual custom list selection
-    Options come from a word_lists directory
+    Options come from a custom_word_lists directory
     :param height: height of the box
     :param width: width of the box
     :param user_name: name of the user
@@ -63,7 +63,7 @@ def custom_file_selection_box(height, width, user_name):
     line_count += solid_line(width)
     line_count += text_line(inner_width, f"{user_name}, please select a custom word collection.", "^")
     line_count += solid_line(width)
-    custom_list_dir = os.listdir("./word_lists/")
+    custom_list_dir = os.listdir("custom_word_lists/")
     custom_list_dir_names = list()
     for i in custom_list_dir:
         custom_list_dir_names.append(i.removesuffix(".txt"))
@@ -139,7 +139,7 @@ def word_selection(height, width, user_name):
             from_file = "Expert"
             break
 
-        # If the user wants to select from a custom uploaded file in the word_lists folder.
+        # If the user wants to select from a custom uploaded file in the custom_word_lists folder.
         if selection == 4:
 
             # Creates a display
@@ -163,7 +163,7 @@ def word_selection(height, width, user_name):
                                 custom_file = custom_list_dir[i]
 
                                 # Word selected
-                                word = random_word(f"word_lists/{custom_file}")
+                                word = random_word(f"custom_word_lists/{custom_file}")
 
                                 # If there are no words in the file.
                                 if word is None:

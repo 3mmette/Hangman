@@ -1,5 +1,5 @@
-from utility_functions import *
-from text_art import *
+from game_files.utility_functions import *
+from game_files.text_art import *
 
 winner = ["Congratulations on winning this game of Hangman.",
           "You played well, and are deserving of your freedom.",

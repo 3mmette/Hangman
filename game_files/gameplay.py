@@ -1,8 +1,8 @@
 import random
 import time
 
-from utility_functions import *
-from text_art import *
+from game_files.utility_functions import *
+from game_files.text_art import *
 
 
 qwerty_keys = [
